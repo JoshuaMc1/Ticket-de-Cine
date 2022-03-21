@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="Tienda virtual Programacion web II">
+    <meta name="description" content="Cinema">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <meta name="theme-color" content="#6610f2">
@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../src/style/main.css">
     <link rel="stylesheet" type="text/css" href="../src/style/bootstrap-select.min.css"> 
     <link rel="stylesheet" type="text/css" href="../src/style/style.css">
+    <link rel="stylesheet" type="text/css" href="../src/style/estilo.css">
     <!-- Font-icon css-->
   </head>
   <body class="app sidebar-mini">

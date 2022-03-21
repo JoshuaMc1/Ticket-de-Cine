@@ -1,0 +1,42 @@
+.app-header {
+ 
+    background-color: rgb(93, 50, 250)!important;
+   
+  }
+
+  @media (min-width: 768px) {
+    .app-header__logo {
+    
+      background-color: rgb(93, 50, 209);
+    }
+  }
+
+
+
+  .app-sidebar__toggle:focus, .app-sidebar__toggle:hover {
+    background-color: rgb(93, 50, 250)!important;
+  }
+ .app-sidebar__user-avatar{
+     width:48px;
+     background:grey;
+     padding:6px;
+ }
+ 
+.page-item.active .page-link {
+  z-index: 1;
+  color: #FFF;
+  background-color: #17A2B8!important;
+  border-color: #17A2B8!important;
+}
+
+.headerRegister{
+  background-color: #009688;
+  color: #FFF;
+}
+.headerUpdate{
+  background-color: #007bff;
+  color: #FFF;
+}
+.notBlock{
+	display: none;
+}
