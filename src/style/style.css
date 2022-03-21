@@ -1,42 +1,142 @@
-.app-header {
- 
-    background-color: rgb(93, 50, 250)!important;
-   
-  }
+:root{
+    --color-blanco: #ffffff;
+    --color-titulo: rgb(144, 12, 63);
+    --fuente: Arial, Helvetica, sans-serif;
+}
 
-  @media (min-width: 768px) {
-    .app-header__logo {
-    
-      background-color: rgb(93, 50, 209);
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    font-size: 16pt;
+    font-family: var(--fuente);
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+    background-image: url('../img/bg-photo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 600px) {
+    .glass{
+        background-color: var(--color-blanco);
+        background: linear-gradient(to right bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+        min-height: 85vh;
+        width: 95%;
+        border-radius: .5rem;
+        box-shadow: rgba(255,255,255,0.7) 1px 1px 1px;
     }
-  }
 
+    .image1,
+    .image2{
+        z-index: 2;
+        position: absolute;
+    }
 
+    .image1{
+        top: 5%;
+        right: 15%;
+    }
 
-  .app-sidebar__toggle:focus, .app-sidebar__toggle:hover {
-    background-color: rgb(93, 50, 250)!important;
-  }
- .app-sidebar__user-avatar{
-     width:48px;
-     background:grey;
-     padding:6px;
- }
- 
-.page-item.active .page-link {
-  z-index: 1;
-  color: #FFF;
-  background-color: #17A2B8!important;
-  border-color: #17A2B8!important;
+    .image2{
+        bottom: 5%;
+        left: 15%;
+    }
 }
 
-.headerRegister{
-  background-color: #009688;
-  color: #FFF;
+@media only screen and (min-width: 600px) {
+    .glass{
+        background-color: var(--color-blanco);
+        background: linear-gradient(to right bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+        min-height: 85vh;
+        width: 70%;
+        border-radius: 1rem;
+        box-shadow: rgba(255,255,255,0.7) 1px 1px 1px;
+    }
+
+    .image1,
+    .image2{
+        z-index: 2;
+        position: absolute;
+    }
+
+    .image1{
+        top: 5%;
+        right: 20%;
+    }
+
+    .image2{
+        bottom: 5%;
+        left: 20%;
+    }
 }
-.headerUpdate{
-  background-color: #007bff;
-  color: #FFF;
+
+@media only screen and (min-width: 992px) {
+    .glass{
+        background-color: var(--color-blanco);
+        background: linear-gradient(to right bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+        min-height: 80vh;
+        width: 30%;
+        border-radius: 1rem;
+        box-shadow: rgba(255,255,255,0.7) 1px 1px 1px;
+        backdrop-filter: blur(.2rem);
+    }
+
+    .image1,
+    .image2{
+        z-index: 2;
+        position: absolute;
+    }
+
+    .image1{
+        top: 5%;
+        right: 37%;
+    }
+
+    .image2{
+        bottom: 5%;
+        left: 37%;
+    }
 }
-.notBlock{
-	display: none;
+
+.title{
+    color: var(--color-titulo);
+    text-decoration: underline;
+}
+
+.lbl{
+    color: var(--color-titulo);
+    font-weight: bold;
+}
+
+.btns{
+    border: var(--color-titulo) solid 1px;
+    color: var(--color-titulo);
+    transition: all .6s;
+}
+
+.btns:hover{
+    background-color: var(--color-titulo);
+    color: var(--color-blanco);
+}
+
+.inpt{
+    font-size: 14pt;
+    caret-color: var(--color-titulo);
+    border: none;
+    background: none;
+    border-bottom: var(--color-titulo) solid 2px;
+}
+
+.inpt:focus{
+    box-shadow: none;
+    caret-color: var(--color-titulo);
+    border: none;
+    background: none;
+    border-bottom: var(--color-titulo) solid 2px;
 }

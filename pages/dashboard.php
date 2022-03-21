@@ -1,5 +1,5 @@
 <?php include 'templates/header_admin.php';?>  
-<main class="app-content">
+<section class="app-content">
       <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
@@ -16,6 +16,6 @@
           </div>
         </div>
       </div>
-    </main>
+    </section>
   <?php include 'templates/footer_admin.php';?>  
   

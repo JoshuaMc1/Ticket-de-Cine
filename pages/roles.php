@@ -1,6 +1,6 @@
 <?php include 'templates/header_admin.php';?>  
 <div id="contentAjax"></div> 
-    <main class="app-content">
+    <section class="app-content">
       <div class="app-title">
         <div>
             <h1><i class="fas fa-user-tag"></i> Roles Usuario
@@ -50,5 +50,5 @@
               </div>
             </div>
         </div>
-    </main>
+    </section>
     <?php include 'templates/footer_admin.php';?>  

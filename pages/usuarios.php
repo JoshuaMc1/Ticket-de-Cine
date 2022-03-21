@@ -1,5 +1,5 @@
 <?php include 'templates/header_admin.php';?>  
-<main class="app-content">
+<section class="app-content">
       <div class="app-title">
         <div>
             <h1><i class="fas fa-user-tag"></i> USUARIOS <small> Cinema</small>
@@ -38,5 +38,5 @@
               </div>
             </div>
         </div>
-    </main>
+    </section>
     <?php include 'templates/footer_admin.php';?>  

@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../src/style/main.css">
     <link rel="stylesheet" type="text/css" href="../src/style/bootstrap-select.min.css"> 
     <link rel="stylesheet" type="text/css" href="../src/style/style.css">
+    <link rel="stylesheet" type="text/css" href="../src/style/estilo.css">
     <!-- Font-icon css-->
   </head>
   <body class="app sidebar-mini">
