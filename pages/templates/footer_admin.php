@@ -16,6 +16,8 @@
     <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
     <script type="text/javascript" src="../src/js/functions_admin.js"></script>
+    <script type="text/javascript" src="../src/js/functions_Roles.js"></script>
+    <script type="text/javascript" src="../src/js/functions_Usuarios.js"></script>
     <script src="../src/js/<?= $data['page_functions_js']; ?>"></script>
 
     

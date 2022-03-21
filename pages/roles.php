@@ -29,6 +29,20 @@
                         </tr>
                       </thead>
                       <tbody>
+                        <tr>
+                          <td>
+                            1
+                          </td>
+                          <td>
+                            Administrador
+                          </td>
+                          <td>
+                            Administrador del Sistema
+                          </td>
+                          <td>
+                            Activo
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
