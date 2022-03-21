@@ -1,4 +1,14 @@
-<?php include 'templates/header_admin.php';?>  
+<?php include 'templates/header_admin.php';
+include("../src/php/database/connection.php");
+
+//escribir el query
+$query= "SELECT * FROM users";
+
+//consultar la base de datos
+$resultadoConsulta = mysqli_query($conection, $query);
+
+?> 
+ 
 <section class="app-content">
       <div class="app-title">
         <div>
@@ -20,16 +30,29 @@
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Nombres</th>
-                          <th>Apellidos</th>
-                          <th>Email</th>
-                          <th>Teléfono</th>
-                          <th>Rol</th>
-                          <th>Status</th>
-                          <th>Acciones</th>
+                          <th>Usuario</th>
+                          <th>Estatus</th>
+                          <td>Acciones</td>
+                        
                         </tr>
                       </thead>
-                      <tbody>
+                          <tbody>
+                          <?php while($usuario = mysqli_fetch_assoc($resultadoConsulta)): ?>
+                              <tr>
+                                <td><?php echo $usuario ['id_user']; ?></td>
+                                <td><?php echo $usuario ['usuario']; ?></td>
+                                <td><?php echo $usuario ['status']; ?></td>
+                                <td>
+                                <a   href="actualizarUsuario.php?id=<?php  echo $usuario ['idusuario']; ?>"  class="btn bg-orange">
+                                  <small><i class="fa-solid fa-pencil"></i></small>
+                                </a>
+                                <a   href="eliminarUsuario.php?id=<?php  echo $usuario ['idusuario']; ?>"  class="btn bg-red">
+                                  <small><i class="fa-solid fa-trash"></i></small>
+                                </a>
+                                </td>
+                                
+                              </tr>
+                            <?php endwhile; ?>
                   
                       </tbody>
                     </table>

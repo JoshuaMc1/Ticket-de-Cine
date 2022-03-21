@@ -21,6 +21,9 @@
      background:grey;
      padding:6px;
  }
+ .app-nav__item:hover{
+   background-color:#007bff;
+ }
  
 .page-item.active .page-link {
   z-index: 1;
@@ -36,6 +39,14 @@
 .headerUpdate{
   background-color: #007bff;
   color: #FFF;
+}
+.bg-orange{
+  background-color: orange;
+
+}
+.bg-red{
+  background-color: red;
+
 }
 .notBlock{
 	display: none;
