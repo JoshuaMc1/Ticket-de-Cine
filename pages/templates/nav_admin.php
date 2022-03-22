@@ -64,5 +64,6 @@
               <span class="app-menu__label">Logout</span>
             </a>
         </li>
+     
       </ul>
     </aside>

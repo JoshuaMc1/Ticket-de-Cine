@@ -51,3 +51,19 @@
 .notBlock{
 	display: none;
 }
+.error{
+  background-color: red;
+ 
+}
+
+.alerta {
+  padding: .5;
+  margin: 1rem 0;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  
+ 
+}
