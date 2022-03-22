@@ -3,7 +3,7 @@ try {
     $sname = "localhost";
     $uname = "root";
     $passw = "";
-    $db = "cinema";
+    $db = "ptd_login";
 
     $conection = mysqli_connect($sname, $uname, $passw, $db);
 
