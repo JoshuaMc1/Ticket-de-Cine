@@ -1,9 +1,9 @@
 <?php
 try {
-    $sname = "localhost";
-    $uname = "root";
-    $passw = "";
-    $db = "ptd_login";
+    $sname = "212.107.17.52";
+    $uname = "u108712096_cinema";
+    $passw = "Cinemaweb2";
+    $db = "u108712096_cinema";
 
     $conection = mysqli_connect($sname, $uname, $passw, $db);
 
