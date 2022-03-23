@@ -2,41 +2,40 @@
 include("../src/php/database/connection.php");
 
 //escribir el query
-$query= "SELECT idPeliculas, nombrePelicula,fechaIngreso, g.nombreGenero as nombre, cl.nombreClasificacion as clasificacion, CASE WHEN statusPelicula='1' THEN 'Activo' ELSE 'Inactivo' END AS estado  FROM peliculas p INNER join generopelicula g on p.idPeliculas=g.idGeneroPel
-INNER JOIN clasificacion cl on p.idClasificacion=cl.idClasificacion;";
+$query= "SELECT * FROM clientes";
 
 //consultar la base de datos
 $resultadoConsulta = mysqli_query($conection, $query);
 
 //arreglo con mensaje de errores
 $errores = [];
-$peliculasNombre= '';
-$peliculasClave= '';
-$peliculasEstado= '';
+$clienteNombre= '';
+$clienteClave= '';
+$clienteEstado= '';
 
 //ejecutar el codigo despues de que el usaurio envia el formulario 
 if($_SERVER ['REQUEST_METHOD']==='POST'){
-$peliculasNombre=mysqli_real_escape_string($conection, $_POST['txtpeliculas']) ;
-$peliculasClave=mysqli_real_escape_string($conection,  $_POST['txtClave']);
-$peliculasEstado=mysqli_real_escape_string($conection, $_POST['listStatus']);
+$clienteNombre=mysqli_real_escape_string($conection, $_POST['txtcliente']) ;
+$clienteClave=mysqli_real_escape_string($conection,  $_POST['txtClave']);
+$clienteEstado=mysqli_real_escape_string($conection, $_POST['listStatus']);
 
-    $verificar="SELECT * FROM users WHERE peliculas='$peliculasNombre'";
+    $verificar="SELECT * FROM users WHERE cliente='$clienteNombre'";
     $resultado= mysqli_query($conection, $verificar);
 
     if($resultado->num_rows){
-      //$errores[]="El peliculas ya existe";
+      //$errores[]="El cliente ya existe";
              
     }else{
         //insertar en la base de datos
-      //$peliculasHash= password_hash($peliculasClave, PASSWORD_BCRYPT);
+      //$clienteHash= password_hash($clienteClave, PASSWORD_BCRYPT);
       
-      $query = "INSERT INTO users (peliculas, clave, status)
-      VALUES  ('$peliculasNombre', '$peliculasHash', '$peliculasEstado')";
+      $query = "INSERT INTO users (cliente, clave, status)
+      VALUES  ('$clienteNombre', '$clienteHash', '$clienteEstado')";
       $resultadoQuery = mysqli_query($conection, $query);
       echo '
       <script>
       
-          window.location = "peliculass.php";
+          window.location = "clientes.php";
       </script>
   ';
       
@@ -48,7 +47,7 @@ $peliculasEstado=mysqli_real_escape_string($conection, $_POST['listStatus']);
 <section class="app-content">
       <div class="app-title">
         <div>
-            <h1><i class="fas fa-user-tag"></i> peliculasS <small> Cinema</small>
+            <h1><i class="fas fa-user-tag"></i> clienteS <small> Cinema</small>
                 <button class="btn btn-info" type="button" data-bs-toggle="modal"
                 data-bs-target="#exampleModal1" id="clasificacion"><i class="fas fa-plus-circle"></i> Nuevo</button>
             </h1>
@@ -56,7 +55,7 @@ $peliculasEstado=mysqli_real_escape_string($conection, $_POST['listStatus']);
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item"><a href="#">peliculasS <small> Cinema</small></a></li>
+          <li class="breadcrumb-item"><a href="#">clienteS <small> Cinema</small></a></li>
         </ul>
       </div>
         <div class="row">
@@ -64,33 +63,36 @@ $peliculasEstado=mysqli_real_escape_string($conection, $_POST['listStatus']);
               <div class="tile">
                 <div class="tile-body">
                   <div class="table-responsive">
-                    <table class="table table-hover table-bordered" id="tablepeliculass">
+                    <table class="table table-hover table-bordered" id="tableclientes">
                       <thead>
                         <tr>
-                          <th>ID</th>
-                          <th>Nombre</th>
-                          <th>Estreno</th>
+                          <th>Id</th>
+                          <th>Dni</th>
+                          <th>Nombres</th>
+                          <th>Apellidos</th>
+                          <th>Edad</th>
                           <th>Genero</th>
-                          <th>Clasificacion</th>
                           <th>Estado</th>
                           <td>Acciones</td>
                         
                         </tr>
                       </thead>
                           <tbody>
-                          <?php while($peliculas = mysqli_fetch_assoc($resultadoConsulta)): ?>
+                          <?php while($cliente = mysqli_fetch_assoc($resultadoConsulta)): ?>
                               <tr>
-                                <td><?php echo $peliculas ['idPeliculas']; ?></td>
-                                <td><?php echo $peliculas ['nombrePelicula']; ?></td>
-                                <td><?php echo $peliculas ['fechaIngreso']; ?></td>
-                                <td><?php echo $peliculas ['nombre']; ?></td>
-                                <td><?php echo $peliculas ['clasificacion']; ?></td>
-                                <td><?php echo $peliculas ['estado']; ?></td>
+                                <td><?php echo $cliente ['idcliente']; ?></td>
+                                <td><?php echo $cliente ['dniCliente']; ?></td>
+                                <td><?php echo $cliente ['nombresCliente']; ?></td>
+                                <td><?php echo $cliente ['apellidosCliente']; ?></td>
+                                <td><?php echo $cliente ['edadCliente']; ?></td>
+                                <td><?php echo $cliente ['idGenero']; ?></td>
+                                <td><?php echo $cliente ['statusCliente']; ?></td>
+
                                 <td>
-                                <a   href="actualizarpeliculas.php?id=<?php  echo $peliculas ['idpeliculas']; ?>"  class="btn bg-orange btn-sm">
+                                <a   href="actualizarcliente.php?id=<?php  echo $cliente ['idcliente']; ?>"  class="btn bg-orange btn-sm">
                                   <i class="fa-solid fa-pencil text-white"></i>
                                 </a>
-                                <a   href="eliminarpeliculas.php?id=<?php  echo $peliculas ['idpeliculas']; ?>"  class="btn bg-red btn-sm">
+                                <a   href="eliminarcliente.php?id=<?php  echo $cliente ['idcliente']; ?>"  class="btn bg-red btn-sm">
                                   <i class="fa-solid fa-trash text-white"></i>
                                 </a>
                                 </td>
@@ -110,7 +112,7 @@ $peliculasEstado=mysqli_real_escape_string($conection, $_POST['listStatus']);
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo peliculas</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo cliente</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -118,13 +120,13 @@ $peliculasEstado=mysqli_real_escape_string($conection, $_POST['listStatus']);
             <div class="modal-body">
               <div class="tile">
                 <div class="tile-body">
-                  <form id="formpeliculas" name="formpeliculas"  method="POST" action="peliculass.php">
+                  <form id="formcliente" name="formcliente"  method="POST" action="clientes.php">
                     <input type="hidden" id="idRol" name="idRol" value="">
                     
                     <div class="form-group">
 
-                      <label for="txtpeliculas" class="control-label">peliculas</label>
-                      <input  class="form-control" id="txtpeliculas" name="txtpeliculas" type="text" placeholder="Tu peliculas" required="">
+                      <label for="txtcliente" class="control-label">cliente</label>
+                      <input  class="form-control" id="txtcliente" name="txtcliente" type="text" placeholder="Tu cliente" required="">
                     </div>
                     <div class="form-group">
                       <label for="txtClave" class="control-label">Clave</label>
