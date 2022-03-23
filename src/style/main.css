@@ -14867,6 +14867,9 @@ be a descendant of the grid when it is being dragged.
   margin-top: 50px;
   padding: 30px;
   background-color: #E5E5E5;
+  background-image: url('../img/bg-photo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   -webkit-transition: margin-left 0.3s ease;
   -o-transition: margin-left 0.3s ease;
   transition: margin-left 0.3s ease;
