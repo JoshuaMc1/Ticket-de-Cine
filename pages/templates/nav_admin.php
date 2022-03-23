@@ -1,4 +1,3 @@
-<?php session_start();?>
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
       <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="../src/img/avatar.png" alt="User Image">
@@ -10,7 +9,7 @@
       </div>
       <ul class="app-menu">
         <li>
-          <a class="app-menu__item" href="#">
+          <a class="app-menu__item" href="./dashboard">
             <i class="app-menu__icon fa fa-dashboard"></i>
             <span class="app-menu__label">Dashboard</span>
           </a>
@@ -22,8 +21,8 @@
             <i class="treeview-indicator fa fa-angle-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="usuarios.php"><i class="icon fa fa-circle-o"></i> Usuarios</a></li>
-            <li><a class="treeview-item" href="roles.php"><i class="icon fa fa-circle-o"></i> Roles</a></li>
+            <li><a class="treeview-item" href="usuarios"><i class="icon fa fa-circle-o"></i> Usuarios</a></li>
+            <li><a class="treeview-item" href="roles"><i class="icon fa fa-circle-o"></i> Roles</a></li>
             <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Permisos</a></li>
           </ul>
         </li>
@@ -35,10 +34,10 @@
             <i class="treeview-indicator fa fa-angle-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="clientes.php"><i class="icon fa fa-circle-o"></i> Clientes</a></li>
-            <li><a class="treeview-item" href="genero_peliculas.php"><i class="icon fa fa-circle-o"></i> Genero</a></li>
-            <li><a class="treeview-item" href="clasificacion.php"><i class="icon fa fa-circle-o"></i> Clasificacion</a></li>
-            <li><a class="treeview-item" href="peliculas.php"><i class="icon fa fa-circle-o"></i> Pelicula</a></li>
+            <li><a class="treeview-item" href="clientes"><i class="icon fa fa-circle-o"></i> Clientes</a></li>
+            <li><a class="treeview-item" href="genero_peliculas"><i class="icon fa fa-circle-o"></i> Genero</a></li>
+            <li><a class="treeview-item" href="clasificacion"><i class="icon fa fa-circle-o"></i> Clasificacion</a></li>
+            <li><a class="treeview-item" href="peliculas"><i class="icon fa fa-circle-o"></i> Pelicula</a></li>
             <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Sala</a></li>
           </ul>
         </li>
@@ -49,17 +48,17 @@
             <i class="treeview-indicator fa fa-angle-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="../reportes/clientes.php"><i class="icon fa fa-circle-o"></i> Clientes</a></li>
-            <li><a class="treeview-item" href="../reportes/genero_peliculas.php"><i class="icon fa fa-circle-o"></i> Genero</a></li>
-            <li><a class="treeview-item" href="../reportes/clasificacion.php"><i class="icon fa fa-circle-o"></i> Clasificacion</a></li>
+            <li><a class="treeview-item" href="../reportes/clientes"><i class="icon fa fa-circle-o"></i> Clientes</a></li>
+            <li><a class="treeview-item" href="../reportes/genero_peliculas"><i class="icon fa fa-circle-o"></i> Genero</a></li>
+            <li><a class="treeview-item" href="../reportes/clasificacion"><i class="icon fa fa-circle-o"></i> Clasificacion</a></li>
             <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Pelicula</a></li>
             <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Salas</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Venta de Tickets</a></li>
+            <li><a class="treeview-item" href="ventas"><i class="icon fa fa-circle-o"></i> Venta de Tickets</a></li>
           </ul>
         </li>
         
         <li>
-            <a class="app-menu__item" href="#">
+            <a class="app-menu__item" href="../src/php/sessions/close_sessions">
               <i class="app-menu__icon fa fa-sign-out" aria-hidden="true"></i>
               <span class="app-menu__label">Logout</span>
             </a>

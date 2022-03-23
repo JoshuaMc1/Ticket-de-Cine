@@ -68,6 +68,21 @@
                     }
                 </script>
             ";
+            elseif($status == "E333"):
+                echo "
+                <script>
+                    var alertPlaceholder = document.getElementById('msgNotificacion');
+                    var e = '<div class=\"alert alert-danger fs-6 alert-dismissible\" role=\"alert\">Necesita una sesión activa<button type=\"button\" id=\"close\" class=\"btn-close btnClose\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>';
+                    error();
+                                        
+                    function error(){
+                        $('#close').click();
+                        var wrapper = document.createElement('div');
+                        wrapper.innerHTML = e;
+                        alertPlaceholder.append(wrapper);
+                    }
+                </script>
+            ";
         endif;
         endif;
     ?>

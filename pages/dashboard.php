@@ -1,4 +1,7 @@
-<?php include 'templates/header_admin.php'; ?>
+<?php
+  session_start();
+  include 'templates/header_admin.php'; 
+?>
 <main class="app-content">
   <div class="app-title">
     <div>

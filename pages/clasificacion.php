@@ -1,4 +1,6 @@
-<?php include 'templates/header_admin.php';
+<?php 
+session_start();
+include 'templates/header_admin.php';
 include("../src/php/database/connection.php");
 
 //escribir el query

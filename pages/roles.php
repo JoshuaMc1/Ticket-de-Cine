@@ -1,4 +1,7 @@
-<?php include 'templates/header_admin.php';?>  
+<?php 
+session_start();
+include 'templates/header_admin.php';
+?>  
 <div id="contentAjax"></div> 
     <section class="app-content">
       <div class="app-title">

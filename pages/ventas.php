@@ -1,4 +1,8 @@
-<?php include 'templates/header_admin.php'; ?>
+<?php 
+    session_start();
+    if(isset($_SESSION['id_user'])):
+    include 'templates/header_admin.php'; 
+?>
 <main class="app-content">
     <div class="app-title">
         <div>
@@ -17,4 +21,13 @@
         </div>
     </div>
 </main>
-<?php include 'templates/footer_admin.php'; ?>
+<?php 
+    include 'templates/footer_admin.php'; 
+    else:
+        echo '
+            <script>
+                window.location = "../?status=E333";
+            </script>
+        ';
+    endif;
+?>
