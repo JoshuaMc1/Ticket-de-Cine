@@ -35,7 +35,7 @@
             <i class="treeview-indicator fa fa-angle-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Clientes</a></li>
+            <li><a class="treeview-item" href="clientes.php"><i class="icon fa fa-circle-o"></i> Clientes</a></li>
             <li><a class="treeview-item" href="genero_peliculas.php"><i class="icon fa fa-circle-o"></i> Genero</a></li>
             <li><a class="treeview-item" href="clasificacion.php"><i class="icon fa fa-circle-o"></i> Clasificacion</a></li>
             <li><a class="treeview-item" href="peliculas.php"><i class="icon fa fa-circle-o"></i> Pelicula</a></li>
@@ -49,9 +49,9 @@
             <i class="treeview-indicator fa fa-angle-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Clientes</a></li>
+            <li><a class="treeview-item" href="../reportes/clientes.php"><i class="icon fa fa-circle-o"></i> Clientes</a></li>
             <li><a class="treeview-item" href="../reportes/genero_peliculas.php"><i class="icon fa fa-circle-o"></i> Genero</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Clasificacion</a></li>
+            <li><a class="treeview-item" href="../reportes/clasificacion.php"><i class="icon fa fa-circle-o"></i> Clasificacion</a></li>
             <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Pelicula</a></li>
             <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Salas</a></li>
             <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Venta de Tickets</a></li>
