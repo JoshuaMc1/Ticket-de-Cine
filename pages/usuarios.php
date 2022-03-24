@@ -31,13 +31,11 @@ $usuarioEstado=mysqli_real_escape_string($conection, $_POST['listStatus']);
         //insertar en la base de datos
       //$usuarioHash= password_hash($usuarioClave, PASSWORD_BCRYPT);
       
-      $query = "INSERT INTO users (usuario, clave, status)
-      VALUES  ('$usuarioNombre', '$usuarioHash', '$usuarioEstado')";
+      $query = "INSERT INTO users (usuario, clave, status) VALUES  ('$usuarioNombre', SHA('$usuarioClave'), '$usuarioEstado')";
       $resultadoQuery = mysqli_query($conection, $query);
       echo '
       <script>
-      
-          window.location = "usuarios.php";
+          window.location = "usuarios";
       </script>
   ';
       
