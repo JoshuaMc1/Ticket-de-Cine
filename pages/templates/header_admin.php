@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="Cinema">
@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <meta name="theme-color" content="#6610f2">
     <title>Dashboard</title>
-   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="../src/style/main.css">
     <link rel="stylesheet" type="text/css" href="../src/style/bootstrap-select.min.css"> 
-    <link rel="stylesheet" type="text/css" href="../src/style/style.css">
-    <link rel="stylesheet" type="text/css" href="../src/style/estilo.css">
+    <link rel="stylesheet" type="text/css" href="../src/style/style.css?v=<?php echo rand();?>">
+    <link rel="stylesheet" type="text/css" href="../src/style/estilo.css?v=<?php echo rand();?>">
     <!-- Font-icon css-->
   </head>
   <body class="app sidebar-mini">

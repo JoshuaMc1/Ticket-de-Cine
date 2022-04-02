@@ -38,7 +38,7 @@
             <li><a class="treeview-item" href="genero_peliculas"><i class="icon fa fa-circle-o"></i> Genero</a></li>
             <li><a class="treeview-item" href="clasificacion"><i class="icon fa fa-circle-o"></i> Clasificacion</a></li>
             <li><a class="treeview-item" href="peliculas"><i class="icon fa fa-circle-o"></i> Pelicula</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Sala</a></li>
+            <li><a class="treeview-item" href="crear_sala"><i class="icon fa fa-circle-o"></i> Sala</a></li>
           </ul>
         </li>
         <li class="treeview">

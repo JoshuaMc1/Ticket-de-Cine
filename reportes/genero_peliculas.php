@@ -6,7 +6,7 @@ class PDF extends FPDF
 function Header()
 {
     // Logo
-   
+    
     // Arial bold 15
     $this->SetFont('Arial','B',18);
     // Movernos a la derecha
@@ -44,17 +44,8 @@ $pdf = new PDF();
 $pdf->AddPage();
 $pdf->SetFont('Arial','',16);
 while($row=$resultado->fetch_assoc()){
-
     $pdf->Cell(90, 10, $row['idGeneroPel'], 1, 0, 'C', 0);
-    
     $pdf->Cell(100, 10, $row['nombreGenero'], 1, 1, 'C', 0);
-    
-    
-    
-    
- }
- 
- 
+}
 
 $pdf->Output();
-?>

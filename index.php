@@ -17,12 +17,12 @@
         <section class="glass">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 mb-2 pt-4 mb-lg-1 pt-lg-3 text-center">
+                    <div class="col-lg-12 mb-2 pt-4 mb-lg-1 pt-lg-3 pt-xl-5 mb-xl-2 text-center">
                         <h2 class="fw-bold title">Login</h2>
                     </div>
                 </div>
-                <div class="row mt-4 px-1 px-lg-3">
-                    <form id="form" action="./src/php/login/check.php" method="POST" onchange="" class="form">
+                <div class="row mt-4 px-1 px-lg-3 pt-xl-3">
+                    <form id="form" action="./src/php/login/check.php" method="POST" class="form">
                         <div class="col-lg-12">
                             <div id="msgNotificacion"></div>
                         </div>
@@ -59,7 +59,7 @@
                     var alertPlaceholder = document.getElementById('msgNotificacion');
                     var e = '<div class=\"alert alert-danger fs-6 alert-dismissible\" role=\"alert\">Usuario o contraseña incorrectos<button type=\"button\" id=\"close\" class=\"btn-close btnClose\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button></div>';
                     error();
-                                        
+                    
                     function error(){
                         $('#close').click();
                         var wrapper = document.createElement('div');

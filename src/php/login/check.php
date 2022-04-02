@@ -5,7 +5,7 @@ if (isset($_POST['txtUser'], $_POST['txtPassw'])) {
             include("../database/connection.php");
             $user = $_POST['txtUser'];
             $passw = $_POST['txtPassw'];
-            //$sql = "SELECT * FROM users WHERE usuario='$user' AND clave='$passw' AND status='1'";
+            // $sql = "SELECT * FROM users WHERE usuario='$user' AND clave='$passw' AND status='1'";
             $sql = "SELECT * FROM users WHERE usuario='$user' AND clave=SHA('$passw') AND status='1'";
             $sentencia = mysqli_query($conection, $sql);
             if (mysqli_num_rows($sentencia) > 0) :
@@ -13,30 +13,30 @@ if (isset($_POST['txtUser'], $_POST['txtPassw'])) {
                 sesiones($data);
                 include('../database/close_connection.php');
                 echo '
-                     <script>
-                         window.location = "../../../pages/dashboard";
-                     </script>
-                 ';
+                    <script>
+                        window.location = "../../../pages/dashboard";
+                    </script>
+                ';
             else :
                 include('../database/close_connection.php');
                 echo '
-                 <script>
-                     window.location = "../../../?status=no";
-                 </script>
+                    <script>
+                        window.location = "../../../?status=no";
+                    </script>
                 ';
             endif;
         else :
             include('../database/close_connection.php');
             echo '
-               <script>
+                <script>
                     window.location = "../../../";
                 </script>
             ';
         endif;
     else :
         echo '
-           <script>
-               window.location = "../../../";
+            <script>
+                window.location = "../../../";
             </script>
         ';
     endif;
