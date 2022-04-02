@@ -46,10 +46,42 @@ $("#formVentas").submit(function (e) {
     let val4 = validar($("#edad"));
     let val5 = validar($("#genero"));
     let val6 = validar($("#sala"));
+    let val7 = validarRadio();
+    let val8 = validarCheck();
+
+    if(val1 == false){
+        alerta("Debe ingresar el DNI");
+    }else if(val2 == false){
+        alerta("Debe ingresar su nombre");
+    }else if(val3 == false){
+        alerta("Debe ingresar su apellido");
+    }else if(val4 == false){
+        alerta("Debe ingresar su edad");
+    }else if(val5 == false){
+        alerta("Debe seleccionar su genero");
+    }else if(val6 == false){
+        alerta("Debe seleccionar una sala");
+    }else if(val7 == true){
+        alerta("Debe seleccionar una pelicula");
+    }else if(val8 == true){
+        alerta("Debe seleccionar minimo un asiento");
+    }else return;
+
+    function validarCheck(){
+        if($("input[name='asiento[]']:checkbox").is(':checked')){
+            return false;
+        }else return true;
+    }
+
+    function validarRadio(){
+        if($("input[name='pelicula']:radio").is(":checked")){
+            return false;
+        }else return true;
+    }
 
     function validar(objeto) {
-        if ($(objeto).val().length < 1) return true;
-        else return false;
+        if ($(objeto).val().length < 1) return false;
+        else return true;
     }
 
     function alerta($message) {
@@ -58,7 +90,38 @@ $("#formVentas").submit(function (e) {
         alertPlaceholder.append(wrapper);
     }
     e.preventDefault();
-    return false;
+});
+
+$("#dni").keypress(function (event) {
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if (keycode == '13') {
+        var dni = $("#dni").val();
+        $.ajax({
+            type: "POST",
+            url: "../src/php/ventas/consultaCliente.php",
+            async: true,
+            data: {
+                'dni': dni
+            },
+            dataType: 'json',
+            success: function (data) {
+
+                if (data.data == 'noData') {
+                    $('#idCliente').val("");
+                    $('#nombre').val("");
+                    $('#apellido').val("");
+                    $('#edad').val("");
+                    $("#genero").val("");
+                } else {
+                    $('#idCliente').val(data.id);
+                    $('#nombre').val(data.nombre);
+                    $('#apellido').val(data.apellido);
+                    $('#edad').val(data.edad);
+                    $("#genero").val(data.genero);
+                }
+            }
+        });
+    }
 });
 
 $("#dni").keypress(function (e) {
@@ -77,27 +140,6 @@ $("#dni").keypress(function (e) {
     }
     if (validos.indexOf(entrada) == -1 && !t_especial) {
         return false;
-    }
-
-    if ($("#dni").val().length == 12) {
-        var dni = $("#dni").val();
-        alert(dni);
-        $.ajax({
-            type: "POST",
-            url: "../src/php/ventas/consultaCliente.php",
-            data: {
-                'dni': dni
-            },
-            dataType: 'json',
-            success: function (data) {
-                console.log(data);
-                $('#idCliente').val(data.id);
-                $('#nombre').val(data.nombre);
-                $('#apellido').val(data.apellido);
-                $('#edad').val(data.edad);
-                $("#genero").val(data.genero);
-            }
-        });
     }
 });
 

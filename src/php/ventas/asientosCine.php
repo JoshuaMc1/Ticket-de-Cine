@@ -3,11 +3,10 @@ if (isset($_POST['idSala'], $_POST['idPelicula'])) {
     if ($_POST['idSala'] != "" && $_POST['idPelicula']) {
         require("../database/connection.php");
         $abc = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M');
-        $fechaActual = date("Y-m-d");
         $idPelicula = $_POST['idPelicula'];
         $idSala = $_POST['idSala'];
 
-        $sentencia = mysqli_query($conection, "SELECT pl.*, slp.*, sl.* FROM peliculas pl INNER JOIN peliculasala slp ON slp.idPelicula=pl.idPeliculas INNER JOIN salas sl ON slp.idSala=sl.idSala WHERE slp.diaEstreno='$fechaActual' AND slp.idSala= '$idSala' AND slp.status='1'");
+        $sentencia = mysqli_query($conection, "SELECT pl.*, slp.*, sl.* FROM peliculas pl INNER JOIN peliculasala slp ON slp.idPelicula=pl.idPeliculas INNER JOIN salas sl ON slp.idSala=sl.idSala WHERE slp.diaEstreno = Curdate() AND slp.idSala= '$idSala' AND idPelicula='$idPelicula' AND slp.status='1'");
         // $sentencia = mysqli_query($conection, "SELECT pl.*, slp.*, sl.* FROM peliculas pl INNER JOIN peliculasala slp ON slp.idPelicula=pl.idPeliculas INNER JOIN salas sl ON slp.idSala=sl.idSala WHERE slp.idSala= '$idSala' AND slp.status='1'");
         
         if (mysqli_num_rows($sentencia) > 0) {
@@ -77,7 +76,7 @@ if (isset($_POST['idSala'], $_POST['idPelicula'])) {
             echo '
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h5 class="text-danger">No hay asientos disponibles</h5>
+                    <h5 class="text-danger">No hay asientos disponibles el dia de hoy</h5>
                 </div>
             </div>
             ';

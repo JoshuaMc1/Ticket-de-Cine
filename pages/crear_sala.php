@@ -6,24 +6,31 @@ if (isset($_SESSION['id_user'])) :
     $sentencia = "SELECT * FROM salas WHERE status='1'";
     $resultado = mysqli_query($conection, $sentencia);
 
-    if($_SERVER ['REQUEST_METHOD']==='POST'){
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nombreSala = mysqli_real_escape_string($conection, $_POST['nombreSala']);
         $filas = mysqli_real_escape_string($conection, $_POST['filas']);
         $asientos = mysqli_real_escape_string($conection, $_POST['asientos']);
-
-        $result = mysqli_query($conection, "INSERT INTO salas(nombreSala, filasSala, asientosSala, status) VALUES ('$nombreSala','$filas','$asientos','1')");
-        if($result){
-            echo "
+        if ($filas > 10 || $filas < 5 || $asientos > 10 || $asientos < 5) {
+            echo '
+                <script>
+                    window.location = "crear_sala?status=row_and_col_error";
+                </script>
+            ';
+        } else {
+            $result = mysqli_query($conection, "INSERT INTO salas(nombreSala, filasSala, asientosSala, status) VALUES ('$nombreSala','$filas','$asientos','1')");
+            if ($result) {
+                echo "
                 <script>
                     window.location = 'crear_sala?status=success';
                 </script>
             ";
-        }else{
-            echo "
+            } else {
+                echo "
                 <script>
                     window.location = 'crear_sala?status=unexpected';
                 </script>
             ";
+            }
         }
     }
 ?>
@@ -89,11 +96,11 @@ if (isset($_SESSION['id_user'])) :
                                 </div>
                                 <div class="card-body">
                                     <div class="mb-2" id="msgNotificacion">
-                                        <?php 
-                                            if(isset($_GET['status'])){
-                                                $status = $_GET['status'];
-                                                if($status == 'yes'){
-                                                    echo "
+                                        <?php
+                                        if (isset($_GET['status'])) {
+                                            $status = $_GET['status'];
+                                            if ($status == 'yes') {
+                                                echo "
                                                         <script>
                                                             var alertPlaceholder = document.getElementById('msgNotificacion');
                                                             var e = '<div class=\"alert alert-success fs-6 alert-dismissible\" role=\"alert\">La sala se a eliminado exitosamente</div>';
@@ -106,8 +113,8 @@ if (isset($_SESSION['id_user'])) :
                                                             }
                                                         </script>
                                                     ";
-                                                }else if($status == 'no'){
-                                                    echo "
+                                            } else if ($status == 'no') {
+                                                echo "
                                                         <script>
                                                             var alertPlaceholder = document.getElementById('msgNotificacion');
                                                             var e = '<div class=\"alert alert-danger fs-6 alert-dismissible\" role=\"alert\">A ocurrido un error</div>';
@@ -120,8 +127,8 @@ if (isset($_SESSION['id_user'])) :
                                                             }
                                                         </script>
                                                     ";
-                                                }else if($status == 'success'){
-                                                    echo "
+                                            } else if ($status == 'success') {
+                                                echo "
                                                         <script>
                                                             var alertPlaceholder = document.getElementById('msgNotificacion1');
                                                             var e = '<div class=\"alert alert-success fs-6 alert-dismissible\" role=\"alert\">Sala creada exitosamente</div>';
@@ -134,8 +141,8 @@ if (isset($_SESSION['id_user'])) :
                                                             }
                                                         </script>
                                                     ";
-                                                }else if($status == 'unexpected'){
-                                                    echo "
+                                            } else if ($status == 'unexpected') {
+                                                echo "
                                                         <script>
                                                             var alertPlaceholder = document.getElementById('msgNotificacion1');
                                                             var e = '<div class=\"alert alert-danger fs-6 alert-dismissible\" role=\"alert\">A ocurrido un error al crear la sala</div>';
@@ -148,8 +155,22 @@ if (isset($_SESSION['id_user'])) :
                                                             }
                                                         </script>
                                                     ";
-                                                }
+                                            } else if ($status == 'row_and_col_error'){
+                                                echo "
+                                                        <script>
+                                                            var alertPlaceholder = document.getElementById('msgNotificacion1');
+                                                            var e = '<div class=\"alert alert-danger fs-6 alert-dismissible\" role=\"alert\">El tamaño maximo para filas y asientos es 10 y el minimo 5</div>';
+                                                            error();
+                                        
+                                                            function error(){
+                                                                var wrapper = document.createElement('div');
+                                                                wrapper.innerHTML = e;
+                                                                alertPlaceholder.append(wrapper);
+                                                            }
+                                                        </script>
+                                                    ";
                                             }
+                                        }
                                         ?>
                                     </div>
                                     <div class="table-responsive">
@@ -189,7 +210,7 @@ if (isset($_SESSION['id_user'])) :
             </div>
         </div>
     </main>
-    <script src="../src/js/salas/app.js?v=<?php echo rand();?>"></script>
+    <script src="../src/js/salas/app.js?v=<?php echo rand(); ?>"></script>
 <?php
     include 'templates/footer_admin.php';
 else :

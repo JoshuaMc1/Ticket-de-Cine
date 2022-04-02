@@ -5,7 +5,7 @@ if (isset($_POST['idSala'])) {
         $idSala = $_POST['idSala'];
         $fechaActual = date("Y-m-d");
         
-        $sentencia = mysqli_query($conection, "SELECT pl.*, slp.*, sl.* FROM peliculas pl INNER JOIN peliculasala slp ON slp.idPelicula=pl.idPeliculas INNER JOIN salas sl ON slp.idSala=sl.idSala WHERE slp.idSala= '$idSala' AND slp.diaEstreno >= Curdate() AND slp.status='1'");
+        $sentencia = mysqli_query($conection, "SELECT pl.*, slp.*, sl.* FROM peliculas pl INNER JOIN peliculasala slp ON slp.idPelicula=pl.idPeliculas INNER JOIN salas sl ON slp.idSala=sl.idSala WHERE slp.idSala= '$idSala' AND slp.diaEstreno = Curdate() AND slp.status='1'");
         if (mysqli_num_rows($sentencia) > 0) {
             while ($data = mysqli_fetch_assoc($sentencia)) {
                 echo '
@@ -36,7 +36,7 @@ if (isset($_POST['idSala'])) {
         } else {
             echo '
                 <div class="col-lg-12 text-center">
-                    <h5 class="text-danger">No hay peliculas disponibles en la sala</h5>
+                    <h5 class="text-danger">No hay peliculas disponibles en la sala el dia de hoy</h5>
                 </div>
             ';
         }

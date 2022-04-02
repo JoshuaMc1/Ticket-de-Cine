@@ -34,7 +34,7 @@ if (isset($_SESSION['id_user'])) :
                                                 <input type="text" name="idCliente" id="idCliente" class="form-control" readonly>
                                             </div>
                                             <div class="col-lg-4 col-11 mb-3">
-                                                <label class="form-label">DNI Cliente</label>
+                                                <label class="form-label">DNI Cliente <i class="fas fa-info-circle bg-info p-1 text-white rounded" data-bs-toggle="tooltip" data-bs-placement="top" title="Dar enter para buscar"></i></label>
                                                 <input type="text" name="dni" id="dni" class="form-control" maxlength="13">
                                             </div>
                                             <div class="col-lg-2 col-6 mb-3">

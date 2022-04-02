@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-04-2022 a las 11:49:59
+-- Tiempo de generación: 02-04-2022 a las 23:58:20
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -37,6 +37,30 @@ CREATE TABLE `asientocliente` (
   `status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `asientocliente`
+--
+
+INSERT INTO `asientocliente` (`idAsiento`, `idCliente`, `idSala`, `asientoReservado`, `idPelicula`, `fechaPelicula`, `status`) VALUES
+(13, 1, 9, '1-2', 3, '2022-04-02', 1),
+(14, 1, 9, '4-1', 3, '2022-04-02', 1),
+(15, 1, 9, '1-2', 2, '2022-04-02', 1),
+(16, 1, 9, '1-3', 2, '2022-04-02', 1),
+(17, 1, 9, '1-5', 2, '2022-04-02', 1),
+(18, 1, 9, '2-2', 2, '2022-04-02', 1),
+(19, 1, 9, '2-4', 2, '2022-04-02', 1),
+(22, 3, 9, '1-3', 3, '2022-04-02', 1),
+(23, 1, 9, '1-1', 2, '2022-04-05', 1),
+(24, 1, 9, '1-2', 2, '2022-04-05', 1),
+(25, 3, 9, '3-3', 2, '2022-04-05', 1),
+(26, 3, 9, '4-4', 2, '2022-04-05', 1),
+(27, 3, 9, '3-4', 2, '2022-04-05', 1),
+(28, 3, 9, '1-1', 3, '2022-04-05', 1),
+(29, 1, 9, '1-3', 3, '2022-04-05', 1),
+(30, 1, 9, '2-4', 3, '2022-04-05', 1),
+(31, 3, 10, '2-2', 3, '2022-04-05', 1),
+(32, 3, 10, '4-8', 3, '2022-04-05', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +71,13 @@ CREATE TABLE `clasificacion` (
   `idClasificacion` int(11) NOT NULL,
   `nombreClasificacion` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `clasificacion`
+--
+
+INSERT INTO `clasificacion` (`idClasificacion`, `nombreClasificacion`) VALUES
+(1, 'PG-13');
 
 -- --------------------------------------------------------
 
@@ -64,6 +95,15 @@ CREATE TABLE `clientes` (
   `idGenero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`idcliente`, `dniCliente`, `nombresCliente`, `apellidosCliente`, `statusCliente`, `edadCliente`, `idGenero`) VALUES
+(1, '1807200000854', 'Joshua David', 'Mclean', 1, 22, 1),
+(2, '1807200000858', 'Juan Antonio', 'Rodirguez', 1, 30, 1),
+(3, '1807200000850', 'Mariela', 'Ochoa', 1, 30, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +115,14 @@ CREATE TABLE `genero` (
   `genero` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `genero`
+--
+
+INSERT INTO `genero` (`idGenero`, `genero`) VALUES
+(1, 'Masculino'),
+(2, 'Femenino');
+
 -- --------------------------------------------------------
 
 --
@@ -85,6 +133,13 @@ CREATE TABLE `generopelicula` (
   `idGeneroPel` int(11) NOT NULL,
   `nombreGenero` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `generopelicula`
+--
+
+INSERT INTO `generopelicula` (`idGeneroPel`, `nombreGenero`) VALUES
+(1, 'Accion');
 
 -- --------------------------------------------------------
 
@@ -103,6 +158,14 @@ CREATE TABLE `peliculas` (
   `statusPelicula` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `peliculas`
+--
+
+INSERT INTO `peliculas` (`idPeliculas`, `nombrePelicula`, `sinopsisPelicula`, `duracionPelicula`, `fechaIngreso`, `idGeneroPel`, `idClasificacion`, `statusPelicula`) VALUES
+(2, 'Spiderman', 'Hombre araña', '02:00:00', '2022-03-10', 1, 1, 1),
+(3, 'Hombres de negro 2', 'En esta entrega, los Hombres de Negro, que siempre han protegido la Tierra, deben descubrir un topo dentro de la organización MIB. Para luchar contra unos nuevos malévolos aliens camuflados como humanos utilizarán una gran tecnología.', '02:30:50', '2002-06-03', 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -118,6 +181,32 @@ CREATE TABLE `peliculasala` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `peliculasala`
+--
+
+INSERT INTO `peliculasala` (`idPSala`, `idSala`, `idPelicula`, `diaEstreno`, `horaEstreno`, `status`) VALUES
+(1, 4, 2, '2022-03-30', '12:30:00', 0),
+(2, 1, 2, '2022-03-08', '18:54:00', 0),
+(3, 1, 2, '2022-03-31', '19:00:00', 0),
+(4, 1, 2, '2022-03-31', '12:30:00', 0),
+(5, 4, 2, '2022-03-31', '12:30:00', 0),
+(6, 1, 3, '2022-04-01', '12:30:00', 0),
+(7, 9, 3, '2022-03-31', '12:30:00', 0),
+(8, 9, 2, '2022-03-31', '03:30:00', 0),
+(9, 7, 3, '2022-04-01', '12:30:00', 0),
+(10, 9, 2, '2022-04-02', '12:30:00', 0),
+(11, 9, 3, '2022-04-01', '12:30:00', 0),
+(12, 9, 3, '2022-04-01', '19:20:00', 0),
+(13, 9, 3, '2022-04-02', '13:20:00', 0),
+(14, 9, 2, '2022-04-02', '12:30:00', 0),
+(15, 9, 3, '2022-04-03', '13:30:00', 0),
+(16, 9, 2, '2022-04-05', '12:30:00', 1),
+(17, 9, 2, '2022-04-05', '16:50:00', 0),
+(18, 9, 3, '2022-04-05', '16:50:00', 1),
+(19, 1, 3, '2022-04-28', '12:30:00', 0),
+(20, 10, 3, '2022-04-15', '12:30:00', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -132,6 +221,21 @@ CREATE TABLE `salas` (
   `status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `salas`
+--
+
+INSERT INTO `salas` (`idSala`, `nombreSala`, `filasSala`, `asientosSala`, `status`) VALUES
+(1, 'Sala principal', 10, 12, 0),
+(3, 'Sala secundaria', 10, 8, 1),
+(4, 'Sala secundaria', 10, 8, 0),
+(5, 'Sala secundaria', 10, 8, 0),
+(6, 'Sala secundaria', 10, 8, 0),
+(7, 'Sala pequeña', 6, 6, 0),
+(8, 'Sala grande', 10, 10, 1),
+(9, 'Sala pequeña', 5, 5, 1),
+(10, 'Sala principal', 10, 9, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -144,6 +248,15 @@ CREATE TABLE `users` (
   `clave` text COLLATE utf8mb4_spanish_ci NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id_user`, `usuario`, `clave`, `status`) VALUES
+(19, 'Joshua', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1),
+(22, 'Juan', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1),
+(23, 'ADMIN', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1);
 
 -- --------------------------------------------------------
 
@@ -244,55 +357,55 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `asientocliente`
 --
 ALTER TABLE `asientocliente`
-  MODIFY `idAsiento` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAsiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `clasificacion`
 --
 ALTER TABLE `clasificacion`
-  MODIFY `idClasificacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idClasificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
 --
 ALTER TABLE `genero`
-  MODIFY `idGenero` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idGenero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `generopelicula`
 --
 ALTER TABLE `generopelicula`
-  MODIFY `idGeneroPel` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idGeneroPel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `peliculas`
 --
 ALTER TABLE `peliculas`
-  MODIFY `idPeliculas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPeliculas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `peliculasala`
 --
 ALTER TABLE `peliculasala`
-  MODIFY `idPSala` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `salas`
 --
 ALTER TABLE `salas`
-  MODIFY `idSala` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idSala` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas
