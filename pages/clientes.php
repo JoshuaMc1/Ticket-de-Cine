@@ -21,7 +21,7 @@ $clienteNombre=mysqli_real_escape_string($conection, $_POST['txtcliente']) ;
 $clienteClave=mysqli_real_escape_string($conection,  $_POST['txtClave']);
 $clienteEstado=mysqli_real_escape_string($conection, $_POST['listStatus']);
 
-    $verificar="SELECT * FROM users WHERE cliente='$clienteNombre'";
+    $verificar="SELECT * FROM users WHERE usuario='$clienteNombre'";
     $resultado= mysqli_query($conection, $verificar);
 
     if($resultado->num_rows){
@@ -31,7 +31,7 @@ $clienteEstado=mysqli_real_escape_string($conection, $_POST['listStatus']);
         //insertar en la base de datos
       //$clienteHash= password_hash($clienteClave, PASSWORD_BCRYPT);
       
-      $query = "INSERT INTO users (cliente, clave, status)
+      $query = "INSERT INTO users (usuario, clave, status)
       VALUES  ('$clienteNombre', '$clienteHash', '$clienteEstado')";
       $resultadoQuery = mysqli_query($conection, $query);
       echo '
