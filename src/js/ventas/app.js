@@ -28,22 +28,6 @@ $("#sala").change(function () {
     }
 });
 
-$("#dni").change(function () { 
-    if($("#dni").val().length >= 13){
-        alert("Ejecuntado consulta");
-        // $.ajax({
-        //     type: "POST",
-        //     url: "",
-        //     data: {
-        //         'idSala': id
-        //     },
-        //     cache: false,
-        //     success: function (response) {
-        //         $("#asientosSala").html(response);
-        //     }
-        // });
-    }
-});
 $("#formVentas").submit(function (e) {
     let alertPlaceholder = document.getElementById('mensajeError');
     let val1 = validar($("#dni"));
@@ -67,7 +51,7 @@ $("#formVentas").submit(function (e) {
     return false;
 });
 
-$("#dni").keydown(function (e) {
+$("#dni").keypress(function (e) {
     var esc = e.keyCode || e.wich;
     var entrada = String.fromCharCode(esc);
 
@@ -84,9 +68,24 @@ $("#dni").keydown(function (e) {
     if (validos.indexOf(entrada) == -1 && !t_especial) {
         return false;
     }
+
+    if($("#dni").val().length >= 12){
+        alert("Ejecuntado consulta");
+        // $.ajax({
+        //     type: "POST",
+        //     url: "",
+        //     data: {
+        //         'idSala': id
+        //     },
+        //     cache: false,
+        //     success: function (response) {
+        //         $("#asientosSala").html(response);
+        //     }
+        // });
+    }
 });
 
-$("#edad").keydown(function (e) {
+$("#edad").keypress(function (e) {
     var esc = e.keyCode || e.wich;
     var entrada = String.fromCharCode(esc);
 

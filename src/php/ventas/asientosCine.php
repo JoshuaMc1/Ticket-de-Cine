@@ -6,8 +6,8 @@ if (isset($_POST['idSala'])) {
         $fechaActual = date("Y-m-d");
         
         $idSala = $_POST['idSala'];
-
-        $sentencia = mysqli_query($conection, "SELECT pl.*, slp.*, sl.* FROM peliculas pl INNER JOIN peliculasala slp ON slp.idPelicula=pl.idPeliculas INNER JOIN salas sl ON slp.idSala=sl.idSala WHERE slp.diaEstreno='$fechaActual' AND slp.idSala= '$idSala' AND slp.status='1'");
+        //$sentencia = mysqli_query($conection, "SELECT pl.*, slp.*, sl.* FROM peliculas pl INNER JOIN peliculasala slp ON slp.idPelicula=pl.idPeliculas INNER JOIN salas sl ON slp.idSala=sl.idSala WHERE slp.diaEstreno='$fechaActual' AND slp.idSala= '$idSala' AND slp.status='1'");
+        $sentencia = mysqli_query($conection, "SELECT pl.*, slp.*, sl.* FROM peliculas pl INNER JOIN peliculasala slp ON slp.idPelicula=pl.idPeliculas INNER JOIN salas sl ON slp.idSala=sl.idSala WHERE slp.idSala= '$idSala' AND slp.status='1'");
         if (mysqli_num_rows($sentencia) > 0) {
             $data = mysqli_fetch_assoc($sentencia);
             $filas = $data['filasSala'];
