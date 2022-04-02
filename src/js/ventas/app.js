@@ -13,12 +13,22 @@ $("#sala").change(function () {
                 $("#pelSala").html(response);
             }
         });
+    }
+
+});
+
+$("#pelSala").dblclick(function () {
+    var idPel = $("input[name='pelicula']:checked").val();
+    var id = $("#sala").find(":selected").val();
+
+    if (idPel != "") {
 
         $.ajax({
             type: "POST",
             url: "../src/php/ventas/asientosCine.php",
             data: {
-                'idSala': id
+                'idSala': id,
+                'idPelicula': idPel
             },
             cache: false,
             success: function (response) {
@@ -69,19 +79,25 @@ $("#dni").keypress(function (e) {
         return false;
     }
 
-    if($("#dni").val().length >= 12){
-        alert("Ejecuntado consulta");
-        // $.ajax({
-        //     type: "POST",
-        //     url: "",
-        //     data: {
-        //         'idSala': id
-        //     },
-        //     cache: false,
-        //     success: function (response) {
-        //         $("#asientosSala").html(response);
-        //     }
-        // });
+    if ($("#dni").val().length == 12) {
+        var dni = $("#dni").val();
+        alert(dni);
+        $.ajax({
+            type: "POST",
+            url: "../src/php/ventas/consultaCliente.php",
+            data: {
+                'dni': dni
+            },
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                $('#idCliente').val(data.id);
+                $('#nombre').val(data.nombre);
+                $('#apellido').val(data.apellido);
+                $('#edad').val(data.edad);
+                $("#genero").val(data.genero);
+            }
+        });
     }
 });
 

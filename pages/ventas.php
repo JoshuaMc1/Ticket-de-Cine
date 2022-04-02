@@ -85,7 +85,7 @@ if (isset($_SESSION['id_user'])) :
                                             <div class="col-lg-12 mb-2">
                                                 <div class="row">
                                                     <div class="col-lg-12 mb-2">
-                                                        <h6 class="fw-bold">Seleccione una pelicula</h6>
+                                                        <h6 class="fw-bold">Seleccione una pelicula <label class="p-1 bg-info rounded text-white" data-bs-toggle="tooltip" data-bs-placement="top" title="Dar doble click para seleccionar una pelicula"><i class="fas fa-info-circle"></i></label></h6>
                                                     </div>
                                                 </div>
                                                 <div class="row" id="pelSala"></div>

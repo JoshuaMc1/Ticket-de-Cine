@@ -1,21 +1,23 @@
 <?php
-if (isset($_POST['idSala'])) {
-    if ($_POST['idSala'] != "") {
+if (isset($_POST['idSala'], $_POST['idPelicula'])) {
+    if ($_POST['idSala'] != "" && $_POST['idPelicula']) {
         require("../database/connection.php");
         $abc = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M');
         $fechaActual = date("Y-m-d");
-        
+        $idPelicula = $_POST['idPelicula'];
         $idSala = $_POST['idSala'];
-        //$sentencia = mysqli_query($conection, "SELECT pl.*, slp.*, sl.* FROM peliculas pl INNER JOIN peliculasala slp ON slp.idPelicula=pl.idPeliculas INNER JOIN salas sl ON slp.idSala=sl.idSala WHERE slp.diaEstreno='$fechaActual' AND slp.idSala= '$idSala' AND slp.status='1'");
-        $sentencia = mysqli_query($conection, "SELECT pl.*, slp.*, sl.* FROM peliculas pl INNER JOIN peliculasala slp ON slp.idPelicula=pl.idPeliculas INNER JOIN salas sl ON slp.idSala=sl.idSala WHERE slp.idSala= '$idSala' AND slp.status='1'");
+
+        $sentencia = mysqli_query($conection, "SELECT pl.*, slp.*, sl.* FROM peliculas pl INNER JOIN peliculasala slp ON slp.idPelicula=pl.idPeliculas INNER JOIN salas sl ON slp.idSala=sl.idSala WHERE slp.diaEstreno='$fechaActual' AND slp.idSala= '$idSala' AND slp.status='1'");
+        // $sentencia = mysqli_query($conection, "SELECT pl.*, slp.*, sl.* FROM peliculas pl INNER JOIN peliculasala slp ON slp.idPelicula=pl.idPeliculas INNER JOIN salas sl ON slp.idSala=sl.idSala WHERE slp.idSala= '$idSala' AND slp.status='1'");
+        
         if (mysqli_num_rows($sentencia) > 0) {
             $data = mysqli_fetch_assoc($sentencia);
             $filas = $data['filasSala'];
             $asientos = $data['asientosSala'];
             $fechaPels = $data['diaEstreno'];
-            $datos = array();
+            $datos = array('0');
 
-            $sentenciaAsientosOcupados = mysqli_query($conection, "SELECT * FROM asientocliente WHERE idSala='$idSala' AND fechaPelicula='$fechaPels' AND status='1'");
+            $sentenciaAsientosOcupados = mysqli_query($conection, "SELECT * FROM asientocliente WHERE idPelicula='$idPelicula' AND idSala='$idSala' AND fechaPelicula='$fechaPels' AND status='1'");
 
             while ($dats = mysqli_fetch_assoc($sentenciaAsientosOcupados)) {
                 array_push($datos, $dats['asientoReservado']);
@@ -29,14 +31,13 @@ if (isset($_POST['idSala'])) {
                 for ($j = 0; $j < $asientos; $j++) {
                     $v2 = $j + 1;
                     $buscar = $v1 . '-' . $v2;
-
                     echo '
-                    <div class="col">
+                        <div class="col">
                         <div class="quiz_card_area">
                         ';
                     if (validar($datos, $buscar)) {
                         echo '
-                            <input class="quiz_checkbox" type="checkbox" id="1" name="asiento[]" value="' . $i + 1, '-', $j + 1, '" disabled/>
+                            <input class="quiz_checkbox" type="checkbox" name="asiento[]" value="' . $i + 1, '-', $j + 1, '" disabled/>
                             <div class="single_quiz_card">
                                 <div class="quiz_card_content">
                                     <div class="quiz_card_icon">
@@ -86,7 +87,7 @@ if (isset($_POST['idSala'])) {
 
 function validar($array1, $buscar1)
 {
-    if (array_search($buscar1, $array1) > 0) :
+    if (array_search($buscar1, $array1, true)) :
         return true;
     else :
         return false;
