@@ -5,10 +5,10 @@ try {
     //$passw = "Cinemaweb2";
     //$db = "u108712096_cinema";
 
-    $sname = "localhost";
-    $uname = "root";
-    $passw = "";
-    $db = "prb_login";
+    $sname = "212.107.17.52";
+    $uname = "u108712096_pcinema";
+    $passw = "Pcinema2";
+    $db = "u108712096_pcinema";
 
     $conection = mysqli_connect($sname, $uname, $passw, $db);
 
