@@ -15,7 +15,6 @@ if (isset($_POST['idSala'], $_POST['idPelicula'])) {
             $asientos = $data['asientosSala'];
             $fechaPels = $data['diaEstreno'];
             $datos = array('0');
-
             $sentenciaAsientosOcupados = mysqli_query($conection, "SELECT * FROM asientocliente WHERE idPelicula='$idPelicula' AND idSala='$idSala' AND fechaPelicula='$fechaPels' AND status='1'");
 
             while ($dats = mysqli_fetch_assoc($sentenciaAsientosOcupados)) {
@@ -29,21 +28,21 @@ if (isset($_POST['idSala'], $_POST['idPelicula'])) {
                 $v1 = $i + 1;
                 for ($j = 0; $j < $asientos; $j++) {
                     $v2 = $j + 1;
-                    $buscar = $v1 . '-' . $v2;
+                    $buscar = $v1.'-'.$v2;
                     echo '
                         <div class="col">
                         <div class="quiz_card_area">
                         ';
                     if (validar($datos, $buscar)) {
                         echo '
-                            <input class="quiz_checkbox" type="checkbox" name="asiento[]" value="' . $i + 1, '-', $j + 1, '" disabled/>
+                            <input class="quiz_checkbox" type="checkbox" name="asiento[]" value="'.$buscar.'" disabled/>
                             <div class="single_quiz_card">
                                 <div class="quiz_card_content">
                                     <div class="quiz_card_icon">
                                         <div class="quiz_icon quiz_icon1"></div>
                                     </div>
                                     <div class="quiz_card_title">
-                                        <h3>' . $abc[$i], $j + 1, '</h3>
+                                        <h3>'.$abc[$i],$j+1,'</h3>
                                     </div>
                                 </div>
                             </div>
@@ -52,14 +51,14 @@ if (isset($_POST['idSala'], $_POST['idPelicula'])) {
                             ';
                     } else {
                         echo '
-                            <input class="quiz_checkbox" type="checkbox" id="1" name="asiento[]" value="' . $i + 1, '-', $j + 1, '" />
+                            <input class="quiz_checkbox" type="checkbox" id="1" name="asiento[]" value="'.$buscar.'" />
                             <div class="single_quiz_card">
                                 <div class="quiz_card_content">
                                     <div class="quiz_card_icon">
                                         <div class="quiz_icon quiz_icon1"></div>
                                     </div>
                                     <div class="quiz_card_title">
-                                        <h3>' . $abc[$i], $j + 1, '</h3>
+                                        <h3>'.$abc[$i],$j+1,'</h3>
                                     </div>
                                 </div>
                             </div>
