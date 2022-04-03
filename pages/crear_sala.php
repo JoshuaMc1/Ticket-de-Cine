@@ -10,7 +10,7 @@ if (isset($_SESSION['id_user'])) :
         $nombreSala = mysqli_real_escape_string($conection, $_POST['nombreSala']);
         $filas = mysqli_real_escape_string($conection, $_POST['filas']);
         $asientos = mysqli_real_escape_string($conection, $_POST['asientos']);
-        if ($filas > 10 || $filas < 5 || $asientos > 10 || $asientos < 5) {
+        if ($filas > 10 || $filas < 5 || $asientos > 10 || $asientos < 6) {
             echo '
                 <script>
                     window.location = "crear_sala?status=row_and_col_error";
